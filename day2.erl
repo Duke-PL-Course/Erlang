@@ -33,16 +33,16 @@ tictactoe(Board) ->
 
   CountSpaces = fun(Cell, Spaces) ->
     case Cell of
-      "x" -> Spaces;
-      "o" -> Spaces;
+      x -> Spaces;
+      o -> Spaces;
       _ -> Spaces + 1
     end
   end,
 
   Winner = fun([A, B, C]) ->
     case [A, B, C] of
-      ["x", "x", "x"] -> "x";
-      ["o", "o", "o"] -> "o";
+      [x, x, x] -> x;
+      [o, o, o] -> o;
       _ -> false
     end
   end,
@@ -50,8 +50,8 @@ tictactoe(Board) ->
   case first(Combs, Winner) of
     false ->
       case lists:foldl(CountSpaces, 0, Board) of
-        0 -> "cat";
-        _ -> "no_winner"
+        0 -> cat;
+        _ -> no_winner
       end;
     Anything -> Anything
   end.

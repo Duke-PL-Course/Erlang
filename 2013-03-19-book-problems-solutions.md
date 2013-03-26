@@ -121,7 +121,8 @@ tictactoe(Board) ->
 ## Day 3: The Red Pill
 
 ### Find
-* An OTP service that will restart a process if it dies* Documentation for building a simple OTP server
+* An OTP service that will restart a process if it dies
+* Documentation for building a simple OTP server
 
 ### Do
 * Monitor the `translate_service` and restart it should it die.
