@@ -65,6 +65,57 @@ calcPrice(ShoppingList) -> [ {Item, Quantity * Price} || {Item, Quantity, Price}
 ### Bonus problem
 * Write a program that reads a tic-tac-toe board presented as a list or a tuple of size nine. Return the winner (x or o) if a winner has been determined, `cat` if there are no more possible moves, or `no_winner` if no player has won yet.
 
+```erlang
+% Applies function to a list and returns the first result that's not false
+first([], _) -> false;
+first([H|T], F) -> case F(H) of
+  false -> first(T, F);
+  Anything -> Anything
+end.
+
+tictactoe(Board) ->
+  [C11, C12, C13, C21, C22, C23, C31, C32, C33] = Board,
+
+  Combs = [
+    % Rows
+    [C11, C12, C13],
+    [C21, C22, C23],
+    [C31, C32, C33],
+    % Columns
+    [C11, C21, C31],
+    [C12, C22, C32],
+    [C13, C23, C33],
+    % Diagonals
+    [C11, C22, C33],
+    [C13, C22, C31]
+  ],
+
+  CountSpaces = fun(Cell, Spaces) ->
+    case Cell of
+      "x" -> Spaces;
+      "o" -> Spaces;
+      _ -> Spaces + 1
+    end
+  end,
+
+  Winner = fun([A, B, C]) ->
+    case [A, B, C] of
+      ["x", "x", "x"] -> "x";
+      ["o", "o", "o"] -> "o";
+      _ -> false
+    end
+  end,
+
+  case first(Combs, Winner) of
+    false ->
+      case lists:foldl(CountSpaces, 0, Board) of
+        0 -> "cat";
+        _ -> "no_winner"
+      end;
+    Anything -> Anything
+  end.
+```
+
 ---
 
 ## Day 3: The Red Pill
