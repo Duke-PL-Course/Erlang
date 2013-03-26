@@ -122,7 +122,11 @@ tictactoe(Board) ->
 
 ### Find
 * An OTP service that will restart a process if it dies
+    * [Supervisor](http://www.erlang.org/doc/man/supervisor.html)
+    * [Learn you some Erlang for great good](http://learnyousomeerlang.com/)
+    * [Supervisors in Erlang](http://www.hccp.org/supervisors.html)
 * Documentation for building a simple OTP server
+    * [A Simple Concurrent Erlang TCP Server](http://joeandmotorboat.com/2008/11/12/a-simple-concurrent-erlang-tcp-server/)
 
 ### Do
 * Monitor the `translate_service` and restart it should it die.
